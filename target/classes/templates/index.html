@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Animal Picture App</title>
+    <meta charset="UTF-8">
+</head>
+<body>
+    <h1>Animal Picture App</h1>
+    <form id="saveForm">
+        <label>Animal:
+            <select id="animal" name="animal">
+                <option value="cat">Cat</option>
+                <option value="dog">Dog</option>
+                <option value="bear">Bear</option>
+            </select>
+        </label>
+        <label>Number of pictures:
+            <input type="number" id="count" name="count" value="1" min="1" max="10"/>
+        </label>
+        <button type="submit">Save Pictures</button>
+    </form>
+
+    <hr>
+
+    <h2>Fetch Last Picture</h2>
+    <label>Animal:
+        <select id="lastAnimal">
+            <option value="cat">Cat</option>
+            <option value="dog">Dog</option>
+            <option value="bear">Bear</option>
+        </select>
+    </label>
+    <button onclick="fetchLastPicture()">Fetch</button>
+    <div id="lastPictureResult"></div>
+
+    <script>
+        document.getElementById("saveForm").onsubmit = async function(e) {
+            e.preventDefault();
+            const animal = document.getElementById("animal").value;
+            const count = document.getElementById("count").value;
+            const resp = await fetch(`/api/pictures/save?animal=${animal}&count=${count}`, {method: "POST"});
+            const data = await resp.json();
+            alert(`Saved ${data.length} ${animal} picture(s)!`);
+        };
+
+        async function fetchLastPicture() {
+            const animal = document.getElementById("lastAnimal").value;
+            const resp = await fetch(`/api/pictures/last?animal=${animal}`);
+            if (resp.ok) {
+                const pic = await resp.json();
+                document.getElementById("lastPictureResult").innerHTML = `
+                    <h3>Last ${animal} picture:</h3>
+                    <img src="${pic.url}" alt="animal" style="max-width:300px;"><br>
+                    <small>Saved at: ${pic.savedAt}</small>
+                `;
+            } else {
+                document.getElementById("lastPictureResult").innerHTML = `No saved picture found for ${animal}.`;
+            }
+        }
+    </script>
+</body>
+</html>

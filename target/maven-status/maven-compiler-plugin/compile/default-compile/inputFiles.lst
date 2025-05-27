@@ -1,0 +1,6 @@
+/workspaces/animal-picture-app/src/main/java/com/example/animalapp/controller/AnimalPictureController.java
+/workspaces/animal-picture-app/src/main/java/com/example/animalapp/model/AnimalPicture.java
+/workspaces/animal-picture-app/src/main/java/com/example/animalapp/controller/UIController.java
+/workspaces/animal-picture-app/src/main/java/com/example/animalapp/AnimalAppApplication.java
+/workspaces/animal-picture-app/src/main/java/com/example/animalapp/repository/AnimalPictureRepository.java
+/workspaces/animal-picture-app/src/main/java/com/example/animalapp/service/AnimalPictureService.java

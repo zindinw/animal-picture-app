@@ -1,0 +1,6 @@
+com/example/animalapp/controller/AnimalPictureController.class
+com/example/animalapp/service/AnimalPictureService.class
+com/example/animalapp/AnimalAppApplication.class
+com/example/animalapp/repository/AnimalPictureRepository.class
+com/example/animalapp/model/AnimalPicture.class
+com/example/animalapp/controller/UIController.class
